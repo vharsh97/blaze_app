@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:object_detection/bg-image.dart';
-import 'package:object_detection/main.dart';
+import 'package:object_detection/utils/Constants.dart';
 
 class LoginPage extends StatefulWidget {
   @override
@@ -34,6 +34,9 @@ class _LoginPageState extends State<LoginPage> {
                                 children: <Widget>[
                                   TextFormField(
                                     decoration: InputDecoration(
+                                        border: OutlineInputBorder(
+                                          borderRadius: BorderRadius.circular(10.0),
+                                        ),
                                         hintText: "Enter Username",
                                         labelText: "Username"),
                                   ),
@@ -43,6 +46,9 @@ class _LoginPageState extends State<LoginPage> {
                                   TextFormField(
                                     obscureText: true,
                                     decoration: InputDecoration(
+                                      border: OutlineInputBorder(
+                                        borderRadius: BorderRadius.circular(10.0),
+                                      ),
                                       hintText: "Enter Password",
                                       labelText: "Password",
                                     ),
@@ -57,10 +63,8 @@ class _LoginPageState extends State<LoginPage> {
                           padding: const EdgeInsets.all(8.0),
                           child: RaisedButton(
                             onPressed:() {
-                              Navigator.push(context, MaterialPageRoute(
-                                builder: (context) => MyApp(),
-                              ),
-                              );
+                              Constants.prefs.setBool("loggedIn", true);
+                              Navigator.pushReplacementNamed(context, "/home");
                             },
                             child: Text("Sign In"),
                             color: Colors.deepOrangeAccent,
