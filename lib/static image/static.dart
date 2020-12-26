@@ -32,7 +32,7 @@ class _StaticImageState extends State<StaticImage> {
       model: "SSDMobileNet",
       imageMean: 127.5,     
       imageStd: 127.5,      
-      threshold: 0.4,       // defaults to 0.1
+      threshold: 0.5,       // defaults to 0.1
       numResultsPerClass: 10,// defaults to 5
       asynch: true          // defaults to true
     );
