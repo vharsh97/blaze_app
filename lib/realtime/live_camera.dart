@@ -47,7 +47,7 @@ class _LiveFeedState extends State<LiveFeed> {
     Size screen = MediaQuery.of(context).size;
     return Scaffold(
       appBar: AppBar(
-        title: Text("Blaze - Fire & Smoke Detector"),
+        title: Text("Blaze"),
       ),
       body: Stack(
         children: <Widget>[

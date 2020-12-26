@@ -1,5 +1,6 @@
 import 'package:camera/camera.dart';
 import 'package:flutter/material.dart';
+import 'package:object_detection/Pages/login_page.dart';
 import 'package:object_detection/realtime/live_camera.dart';
 import 'package:object_detection/static%20image/static.dart';
 import 'bg-image.dart';
@@ -14,7 +15,7 @@ Future<void> main() async {
   runApp(
     MaterialApp(
       title: "Blaze",
-      home: MyApp(),
+      home: LoginPage(),
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
         primaryColor: Colors.deepOrangeAccent,
@@ -34,7 +35,7 @@ class _MyAppState extends State<MyApp> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Blaze - Fire & Smoke Detector"),
+        title: Text("Blaze"),
         actions: <Widget>[
           IconButton(
             icon: Icon(Icons.info),

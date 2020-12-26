@@ -134,7 +134,7 @@ class _StaticImageState extends State<StaticImage> {
 
     return Scaffold(
       appBar: AppBar(
-        title: Text("Blaze - Fire & Smoke Detector"),
+        title: Text("Blaze"),
       ),
       floatingActionButton: Row(
         mainAxisAlignment: MainAxisAlignment.end,
