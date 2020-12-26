@@ -2,6 +2,8 @@ import 'package:camera/camera.dart';
 import 'package:flutter/material.dart';
 import 'package:object_detection/realtime/live_camera.dart';
 import 'package:object_detection/static%20image/static.dart';
+import 'bg-image.dart';
+
 List<CameraDescription> cameras;
 
 Future<void> main() async {
@@ -40,40 +42,53 @@ class _MyAppState extends State<MyApp> {
           ),
         ],
       ),
-      body: Container(
-        child:Center(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: <Widget>[
-              ButtonTheme(
-                buttonColor: Colors.deepOrangeAccent,
-                minWidth: 170,
-                child: RaisedButton(
-                  child: Text("Detect in Image"),
-                  onPressed: () {
-                    Navigator.push(context, MaterialPageRoute(
-                      builder: (context) => StaticImage(),
+      body: Stack(
+        fit: StackFit.expand,
+        children: <Widget>[
+          BgImage(),
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: SingleChildScrollView(
+              child: Column(
+                children: [
+                  SizedBox(height: MediaQuery.of(context).size.height / 3),
+                  ButtonTheme(
+                    buttonColor: Colors.deepOrangeAccent,
+                    minWidth: 170,
+                    child: RaisedButton(
+                      child: Text(
+                        "Detect in Image",
+                        style: TextStyle(color: Colors.white),
                       ),
-                    );
-                  },
-                ),
-              ),
-              ButtonTheme(
-                buttonColor: Colors.deepOrangeAccent,
-                minWidth: 160,
-                child: RaisedButton(
-                  child: Text("Real Time Detection"),
-                  onPressed:() {
-                    Navigator.push(context, MaterialPageRoute(
-                      builder: (context) => LiveFeed(cameras),
+                      onPressed: () {
+                        Navigator.push(context, MaterialPageRoute(
+                          builder: (context) => StaticImage(),
+                        ),
+                        );
+                      },
+                    ),
+                  ),
+                  ButtonTheme(
+                    buttonColor: Colors.deepOrangeAccent,
+                    minWidth: 160,
+                    child: RaisedButton(
+                      child: Text(
+                        "Real Time Detection",
+                        style: TextStyle(color: Colors.white),
                       ),
-                    );
-                  },
-                ),
+                      onPressed:() {
+                        Navigator.push(context, MaterialPageRoute(
+                          builder: (context) => LiveFeed(cameras),
+                        ),
+                        );
+                      },
+                    ),
+                  ),
+                ],
               ),
-            ],
+            ),
           ),
-        ),
+        ],
       ),
     );
   }
