@@ -50,7 +50,7 @@ flutter:
 
   # To add assets to your application, add an assets section, like this:
   assets:
-    - assets/models/ssd_mobilenet.tflite
+    - assets/models/modelv3-tiny.tflite
     - assets/models/labels.txt
     - assets/bg.jpg
 

@@ -42,7 +42,7 @@ class _CameraFeedState extends State<CameraFeed> {
             isDetecting = true;
             Tflite.detectObjectOnFrame(
               bytesList: img.planes.map((plane) {return plane.bytes;}).toList(),
-              model: "SSDMobileNet",
+              model: "yolov3-tiny",
               imageHeight: img.height,
               imageWidth: img.width,
               imageMean: 127.5,

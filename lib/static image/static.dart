@@ -20,7 +20,7 @@ class _StaticImageState extends State<StaticImage> {
   // this function loads the model
   loadTfModel() async {
     await Tflite.loadModel(
-      model: "assets/models/ssd_mobilenet.tflite",
+      model: "assets/models/modelv3-tiny.tflite",
       labels: "assets/models/labels.txt",
     );
   }
@@ -29,10 +29,10 @@ class _StaticImageState extends State<StaticImage> {
   detectObject(File image) async {
     var recognitions = await Tflite.detectObjectOnImage(
       path: image.path,       // required
-      model: "SSDMobileNet",
+      model: "yolov3-tiny",
       imageMean: 127.5,     
       imageStd: 127.5,      
-      threshold: 0.5,       // defaults to 0.1
+      threshold: 0.2,       // defaults to 0.1
       numResultsPerClass: 10,// defaults to 5
       asynch: true          // defaults to true
     );
