@@ -21,7 +21,7 @@ class _LiveFeedState extends State<LiveFeed> {
   }
   loadTfModel() async {
     await Tflite.loadModel(
-      model: "assets/models/ssd_mobilenet.tflite",
+      model: "assets/models/modelv3-tiny.tflite",
       labels: "assets/models/labels.txt",
     );
   }
@@ -47,7 +47,7 @@ class _LiveFeedState extends State<LiveFeed> {
     Size screen = MediaQuery.of(context).size;
     return Scaffold(
       appBar: AppBar(
-        title: Text("Blaze - Fire & Smoke Detector"),
+        title: Text("Blaze"),
       ),
       body: Stack(
         children: <Widget>[
