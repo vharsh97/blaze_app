@@ -59,12 +59,14 @@ Most of these cells and bounding boxes will not contain an object. Therefore, we
 We trained various object detection models, Starting from <strong>YOLO-V1</strong> to <strong>YOLO-V4</strong>.First we  implemented yolov1 fully from scratch,but as there were various pre-trained models avaliable and also due to time constraints ,building all the models from scartch was not a nice option .So we used various pre-trained models avaliable and appiled tranfer learning on them.
 Here are some of the models that we have trained along with their corresponding colab links:-
 * Ssd-mobilenet
-* yolov4-tiny
-* yolov3-tiny
+
 
 |  🧾 Colab Notebook  |   📂 Dataset with Labels   | 🔑 Trained Model |  ✍ LabelImg |
 |------------|-------------|-----------|-----------|
 | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://drive.google.com/file/d/1O1tlwjbt4dUWBct2Jv0vHXPNe_fcMCa_/view?usp=sharing) | [Dataset with Labels](https://drive.google.com/file/d/1O1tlwjbt4dUWBct2Jv0vHXPNe_fcMCa_/view?usp=sharing) | [Download Model](https://drive.google.com/file/d/1-0mACyQvwGSpaxXS57Z1L6wdHutpuFRE/view?usp=sharing) | [Label Img ](https://github.com/tzutalin/labelImg)  |
+
+* yolov4-tiny
+* yolov3-tiny
 
 
 ## Machine Learning powered Android Application
