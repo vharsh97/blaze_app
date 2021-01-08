@@ -19,11 +19,15 @@ To explore the concept of object detection it is useful to begin with image clas
 <p><strong>Object detection (3)</strong> provides the tools for doing just that –  finding all the objects in an image and drawing the so-called <strong>bounding boxes</strong> around them. There are also some situations where we want to find exact boundaries of our objects in the process called <strong>instance segmentation</strong>, but this is a topic for another post.</p>
 
 ***
-| | | 
-|:-------------------------:|:-------------------------:|
+
 <img width="700"  src="https://appsilon.com/wp-content/uploads/2018/08/types.png">
 
 ***
+
+## YOLO Algorithm
+There are a few different algorithms for object detection and they can be split into two groups:-
+*Algorithms based on classification. They are implemented in two stages. First, they select regions of interest in an image. Second, they classify these regions using convolutional neural networks. This solution can be slow because we have to run predictions for every selected region. A widely known example of this type of algorithm is the Region-based convolutional neural network (RCNN) and its cousins Fast-RCNN, Faster-RCNN and the latest addition to the family: Mask-RCNN. Another example is RetinaNet.
+*Algorithms based on regression – instead of selecting interesting parts of an image, they predict classes and bounding boxes for the whole image in one run of the algorithm. The two best known examples from this group are the YOLO (You Only Look Once) family algorithms and SSD (Single Shot Multibox Detector). They are commonly used for  real-time object detection as, in general, they trade a bit of accuracy for large improvements in speed.
 
 ## What is YOLO Object Detection?
 
