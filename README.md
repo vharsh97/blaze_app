@@ -38,6 +38,15 @@ There are a few different algorithms for object detection and they can be split 
 In addition, we have to predict the pc value, which is the probability that there is an object in the bounding box.
 ***
 <img width="700"  src="https://appsilon.com/wp-content/uploads/2018/08/bbox-1.png">
+
+***
+
+As we mentioned above, when working with the YOLO algorithm we are not searching for interesting regions in our image that could potentially contain an object. 
+Instead, we are splitting our image into cells, typically using a 19×19 grid. Each cell is responsible for predicting 5 bounding boxes (in case there is more than one object in this cell). Therefore, we arrive at a large number of 1805 bounding boxes for one image.
+***
+
+<img width="700"  src="https://appsilon.com/wp-content/uploads/2018/08/yolo-1.png">
+
 ***
 
 
