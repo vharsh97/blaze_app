@@ -17,6 +17,7 @@ To explore the concept of object detection it is useful to begin with image clas
 <p>In a real real-life scenario, we need to go beyond locating just one object but rather multiple objects in one image. For example, a <strong>self-driving car</strong> has to find the location of other cars, traffic lights, signs, humans and to take appropriate action based on this information.
 </p>
 <p><strong>Object detection (3)</strong> provides the tools for doing just that –  finding all the objects in an image and drawing the so-called <strong>bounding boxes</strong> around them. There are also some situations where we want to find exact boundaries of our objects in the process called <strong>instance segmentation</strong>, but this is a topic for another post.</p><br><br>
+
 ***
 | | | 
 |:-------------------------:|:-------------------------:|
