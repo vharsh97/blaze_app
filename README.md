@@ -49,6 +49,10 @@ Instead, we are splitting our image into cells, typically using a 19×19 grid. E
 
 ***
 Most of these cells and bounding boxes will not contain an object. Therefore, we predict the value pc, which serves to remove boxes with low object probability and bounding boxes with the highest shared area in a process called <strong>non-max suppression</strong>.
+***
+<img width="700"  src="https://appsilon.com/wp-content/uploads/2018/08/nonmax-1.png">
+
+***
 
 
 ## What is YOLO Object Detection?
