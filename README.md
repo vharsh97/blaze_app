@@ -78,9 +78,9 @@ Here are some of the models that we have trained along with their corresponding 
 | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/drive/1MRNFie20j_8kyusao_TWsVCnydfQGiRP?usp=sharing) | [Dataset with Labels](https://drive.google.com/drive/folders/1DdAeWgd2S6kMzW5LinWL1cXqKn8D8xGs?usp=sharing) |   [Label Img ](https://github.com/tzutalin/labelImg)  |
 
 ## Results:-
-<img width="700"  src="">
-<img width="700"  src="https://appsilon.com/wp-content/uploads/2018/08/yolo-1.png">
-<img width="700"  src="https://appsilon.com/wp-content/uploads/2018/08/yolo-1.png">
+<img width="700"  src="/screenshots/1.png">
+<img width="700"  src="/screenshots/2.png">
+<img width="700"  src="/screenshots/3.png">
 
 ## Machine Learning powered Android Application
 This application can detect objects in any of the three ways:
