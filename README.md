@@ -21,7 +21,7 @@ To explore the concept of object detection it is useful to begin with image clas
 ***
 | | | 
 |:-------------------------:|:-------------------------:|
-<img width="500"  src="https://appsilon.com/wp-content/uploads/2018/08/types.png">
+                            <img width="500"  src="https://appsilon.com/wp-content/uploads/2018/08/types.png">
 
 ***
 | | | 
