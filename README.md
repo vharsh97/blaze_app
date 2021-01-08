@@ -12,7 +12,10 @@ be drawn on the image once the fire or smoke is detected as shown in below image
 
 ## Object Detection Overview:-
 To explore the concept of object detection it is useful to begin with image classification. Image Classification goes through levels of incremental complexity.
-<p><strong>Image classification (1)</strong> aims at assigning an image to one of a number of different categories (e.g. car, dog, cat, human, etc.), essentially answering the question “What is in this picture?”. One image has only one category assigned to it.</p> 
+<p><strong>Image classification (1)</strong> aims at assigning an image to one of a number of different categories (e.g. car, dog, cat, human, etc.), essentially answering the question “What is in this picture?”. One image has only one category assigned to it.</p>
+<p><strong>Object localization (2)</strong> then allows us to locate our object in the image, so our question changes to “What is it and where it is?”. </p><br>
+<p>In a real real-life scenario, we need to go beyond locating just one object but rather multiple objects in one image. For example, a <strong>self-driving car</strong> has to find the location of other cars, traffic lights, signs, humans and to take appropriate action based on this information.
+</p>
 
 ## What is YOLO Object Detection?
 
