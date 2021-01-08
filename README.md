@@ -63,7 +63,7 @@ Here are some of the models that we have trained along with their corresponding 
 
 |  🧾 Colab Notebook  |   📂 Dataset with Labels   | 🔑 Trained Model |  ✍ LabelImg |
 |------------|-------------|-----------|-----------|
-| [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/drive/1MRNFie20j_8kyusao_TWsVCnydfQGiRP?authuser=1#scrollTo=NfIiNcb0OWk6) | [Dataset with Labels](https://drive.google.com/file/d/1O1tlwjbt4dUWBct2Jv0vHXPNe_fcMCa_/view?usp=sharing) | [Download Model](https://drive.google.com/file/d/1-0mACyQvwGSpaxXS57Z1L6wdHutpuFRE/view?usp=sharing) | [Label Img ](https://github.com/tzutalin/labelImg)  |
+| [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/drive/1MRNFie20j_8kyusao_TWsVCnydfQGiRP?usp=sharing) | [Dataset with Labels](https://drive.google.com/file/d/1O1tlwjbt4dUWBct2Jv0vHXPNe_fcMCa_/view?usp=sharing) | [Download Model](https://drive.google.com/file/d/1-0mACyQvwGSpaxXS57Z1L6wdHutpuFRE/view?usp=sharing) | [Label Img ](https://github.com/tzutalin/labelImg)  |
 
 * yolov4-tiny
 * yolov3-tiny
