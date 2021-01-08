@@ -6,6 +6,10 @@ To build an Android application that can detect fire and smoke in an image. The 
 can be either taken from gallery or capture a new image using camera. Colored bounding box has to
 be drawn on the image once the fire or smoke is detected as shown in below image.
 
+# Objectives:-
+* To make an object detection model and deploy it on aws ec2.
+* To make an flutter app and make an api call from the deployed model for fire and smoke detection.
+
 ## Machine Learning powered Android Application
 This application can detect objects in any of the three ways:
   * Image choosen from Gallery
