@@ -35,6 +35,12 @@ There are a few different algorithms for object detection and they can be split 
 * height (bh)
 * value cis corresponding to a class of an object (such as: car, traffic lights, etc.).
 
+In addition, we have to predict the pc value, which is the probability that there is an object in the bounding box.
+***
+<img width="700"  src="https://appsilon.com/wp-content/uploads/2018/08/bbox-1.png">
+***
+
+
 ## What is YOLO Object Detection?
 
 ## Machine Learning powered Android Application
