@@ -89,6 +89,7 @@ We deployed our model to AWS Ec2 instance with free tier usage that it provides 
 <a href="http://ec2-3-17-69-178.us-east-2.compute.amazonaws.com:8080">Blaze-Web</a>
 
 
+
 ## Machine Learning powered Android Application
 This application can detect objects in any of the three ways:
   * Image choosen from Gallery
