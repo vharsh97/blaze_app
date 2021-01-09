@@ -83,6 +83,12 @@ Here are some of the models that we have trained along with their corresponding 
 ### Conclusion:-
 Based upon accouracy,speed and efficiency of all the three models <strong>yolov3-tiny</strong> performed the best.Therefore,we selected this model for making object detection api and then call this api through the flutter app and detect fire and smoke.
 
+## Deploying the model
+We deployed our model to AWS Ec2 instance with free tier usage that it provides for 1 year.We used tenserflow cpu to predict our model as tensorflow-gpu was takes much memory which causes difficulty in deploying the model.But as CPU version in very slow to predict the model sometimes the api responds very late.
+## Link to website:-
+<a href="http://ec2-3-17-69-178.us-east-2.compute.amazonaws.com:8080">
+
+
 ## Machine Learning powered Android Application
 This application can detect objects in any of the three ways:
   * Image choosen from Gallery
