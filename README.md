@@ -80,6 +80,9 @@ Here are some of the models that we have trained along with their corresponding 
 ## Results:-
 <img width="300" height="300" src="/screenshots/1.png"><img width="300" height="300" src="/screenshots/2.png"><img width="300" height="300" src="/screenshots/3.png"><img width="300" height="300" src="/screenshots/detection.jpg">
 
+### Conclusion:-
+Based upon accouracy,speed and efficiency of all the three models <strong>yolov3-tiny</strong> performed the best.Therefore,we selected this model for making object detection api and then call this api through the flutter app and detect fire and smoke.
+
 ## Machine Learning powered Android Application
 This application can detect objects in any of the three ways:
   * Image choosen from Gallery
