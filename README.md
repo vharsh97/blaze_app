@@ -75,7 +75,7 @@ Here are some of the models that we have trained along with their corresponding 
 
 |  🧾 Colab Notebook  |   📂 Dataset with Labels    |  ✍ LabelImg |
 |------------|-------------|-----------|
-| [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/drive/1MRNFie20j_8kyusao_TWsVCnydfQGiRP?usp=sharing) | [Dataset with Labels](https://drive.google.com/drive/folders/1DdAeWgd2S6kMzW5LinWL1cXqKn8D8xGs?usp=sharing) |   [Label Img ](https://github.com/tzutalin/labelImg)  |
+| [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/drive/11uronAIzfEJ_-wWQGDDSnaSiCnN6WCOl?usp=sharing) | [Dataset with Labels](https://drive.google.com/drive/folders/1DdAeWgd2S6kMzW5LinWL1cXqKn8D8xGs?usp=sharing) |   [Label Img ](https://github.com/tzutalin/labelImg)  |
 
 ## Results:-
 <img width="300" height="300" src="/screenshots/1.png"><img width="300" height="300" src="/screenshots/2.png"><img width="300" height="300" src="/screenshots/3.png"><img width="300" height="300" src="/screenshots/detection.jpg">
@@ -101,4 +101,4 @@ This application can detect objects in any of the three ways:
   * Real time in video stream
   
  ## Model is trained using Yolov3-tiny (Object Detection)
-  * Link to the collab - https://colab.research.google.com/drive/11uronAIzfEJ_-wWQGDDSnaSiCnN6WCOl?usp=sharing
+  * Link to the collab - https://drive.google.com/file/d/18yJI-dbjb16xbyL5oA2qhLGWAgsTRg_Q/view?usp=sharing
