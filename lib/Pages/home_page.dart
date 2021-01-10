@@ -49,19 +49,19 @@ class _MyAppState extends State<MyApp> {
                       },
                     ),
                   ),
-                  ButtonTheme(
-                    buttonColor: Colors.deepOrangeAccent,
-                    minWidth: 160,
-                    child: RaisedButton(
-                      child: Text(
-                        "Real Time Detection",
-                        style: TextStyle(color: Colors.white),
-                      ),
-                      onPressed:() {
-                        Navigator.pushNamed(context, "/livefeed");
-                      },
-                    ),
-                  ),
+                  // ButtonTheme(
+                  //   buttonColor: Colors.deepOrangeAccent,
+                  //   minWidth: 160,
+                  //   child: RaisedButton(
+                  //     child: Text(
+                  //       "Real Time Detection",
+                  //       style: TextStyle(color: Colors.white),
+                  //     ),
+                  //     onPressed:() {
+                  //       Navigator.pushNamed(context, "/livefeed");
+                  //     },
+                  //   ),
+                  // ),
                 ],
               ),
             ),

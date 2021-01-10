@@ -1,188 +1,135 @@
-import 'dart:io';
 import 'package:flutter/material.dart';
+import 'dart:io';
+import 'dart:convert';
+import 'package:http/http.dart' as http;
 import 'package:image_picker/image_picker.dart';
-import 'package:tflite/tflite.dart';
 
 class StaticImage extends StatefulWidget {
+  StaticImage() : super();
+
+  final String title = "Upload Image Demo";
 
   @override
-  _StaticImageState createState() => _StaticImageState();
+  StaticImageState createState() => StaticImageState();
 }
 
-class _StaticImageState extends State<StaticImage> {
-  File _image;
-  List _recognitions;
-  bool _busy;
-  double _imageWidth, _imageHeight;
+class StaticImageState extends State<StaticImage> {
+  //
+  static final String uploadEndPoint =
+      'http://ec2-3-17-69-178.us-east-2.compute.amazonaws.com:8080/image';
+  Future<File> file;
+  String status = '';
+  String base64Image;
+  File tmpFile;
+  String errMessage = 'Error Uploading Image';
 
-  final picker = ImagePicker();
-
-  // this function loads the model
-  loadTfModel() async {
-    await Tflite.loadModel(
-      model: "assets/models/modelv3-tiny.tflite",
-      labels: "assets/models/labels.txt",
-    );
+  chooseImage() {
+    setState(() {
+      file = ImagePicker.pickImage(source: ImageSource.gallery);
+    });
+    setStatus('');
   }
 
-  // this function detects the objects on the image
-  detectObject(File image) async {
-    var recognitions = await Tflite.detectObjectOnImage(
-      path: image.path,       // required
-      model: "yolov3-tiny",
-      imageMean: 127.5,     
-      imageStd: 127.5,      
-      threshold: 0.2,       // defaults to 0.1
-      numResultsPerClass: 10,// defaults to 5
-      asynch: true          // defaults to true
-    );
-    FileImage(image)
-        .resolve(ImageConfiguration())
-        .addListener((ImageStreamListener((ImageInfo info, bool _) {
-          setState(() {
-            _imageWidth = info.image.width.toDouble();
-            _imageHeight = info.image.height.toDouble();
-          });
-        }))); 
+  setStatus(String message) {
     setState(() {
-      _recognitions = recognitions;
+      status = message;
     });
   }
 
-  @override
-  void initState() { 
-    super.initState();
-    _busy = true;
-    loadTfModel().then((val) {{
-      setState(() {
-        _busy = false;
-      });
-    }});
+  startUpload() {
+    setStatus('Uploading Image...');
+    if (null == tmpFile) {
+      setStatus(errMessage);
+      return;
+    }
+    String fileName = tmpFile.path.split('/').last;
+    upload(fileName);
   }
-  // display the bounding boxes over the detected objects
-  List<Widget> renderBoxes(Size screen) {
-    if (_recognitions == null) return [];
-    if (_imageWidth == null || _imageHeight == null) return [];
 
-    double factorX = screen.width;
-    double factorY = _imageHeight / _imageHeight * screen.width;
+  upload(String fileName) {
+    http.post(uploadEndPoint, body: {
+      "image": base64Image,
+      "name": fileName,
+    }).then((result) {
+      setStatus(result.statusCode == 200 ? result.body : errMessage);
+    }).catchError((error) {
+      setStatus(error);
+    });
+  }
 
-    Color red = Colors.red;
-
-    return _recognitions.map((re) {
-      return Container(
-        child: Positioned(
-          left: re["rect"]["x"] * factorX,
-          top: re["rect"]["y"] * factorY,
-          width: re["rect"]["w"] * factorX,
-          height: re["rect"]["h"] * factorY,
-          child: ((re["confidenceInClass"] > 0.50))? Container(
-              decoration: BoxDecoration(
-                border: Border.all(
-                color: red,
-                width: 3,
-              )
+  Widget showImage() {
+    return FutureBuilder<File>(
+      future: file,
+      builder: (BuildContext context, AsyncSnapshot<File> snapshot) {
+        if (snapshot.connectionState == ConnectionState.done &&
+            null != snapshot.data) {
+          tmpFile = snapshot.data;
+          base64Image = base64Encode(snapshot.data.readAsBytesSync());
+          return Flexible(
+            child: Image.file(
+              snapshot.data,
+              fit: BoxFit.fill,
             ),
-            child: Text(
-              "${re["detectedClass"]} ${(re["confidenceInClass"] * 100).toStringAsFixed(0)}%",
-              style: TextStyle(
-                background: Paint()..color = Colors.black,
-                color: Colors.redAccent,
-                fontSize: 15,
-              ),
-            ),
-          ) : Container()
-        ),
-      );
-    }).toList();
+          );
+        } else if (null != snapshot.error) {
+          return const Text(
+            'Error Picking Image',
+            textAlign: TextAlign.center,
+          );
+        } else {
+          return const Text(
+            'No Image Selected',
+            textAlign: TextAlign.center,
+          );
+        }
+      },
+    );
   }
 
   @override
   Widget build(BuildContext context) {
-    Size size = MediaQuery.of(context).size;
-
-    List<Widget> stackChildren = [];
-
-    stackChildren.add(
-      Positioned(
-        // using ternary operator
-        child: _image == null ? 
-        Container(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: <Widget>[
-              Text("Please Select an Image"),
-            ],
-          ),
-        )
-      : // if not null then 
-        Container(
-          child:Image.file(_image)
-        ),
-      )
-    );
-
-    stackChildren.addAll(renderBoxes(size));
-
-    if (_busy) {
-      stackChildren.add(
-        Center(
-          child: CircularProgressIndicator(),
-        )
-      );
-    }
-
     return Scaffold(
       appBar: AppBar(
-        title: Text("Blaze"),
-      ),
-      floatingActionButton: Row(
-        mainAxisAlignment: MainAxisAlignment.end,
-        children: <Widget>[
-          FloatingActionButton(
-            heroTag: "Fltbtn2",
-            child: Icon(Icons.camera_alt),
-            onPressed: getImageFromCamera,
-          ),
-          SizedBox(width: 10,),
-          FloatingActionButton(
-            heroTag: "Fltbtn1",
-            child: Icon(Icons.photo),
-            onPressed: getImageFromGallery,
-          ),
-        ],
+        title: Text("Upload Image Demo"),
       ),
       body: Container(
-        alignment: Alignment.center,
-        child:Stack(
-        children: stackChildren,
-      ),
+        padding: EdgeInsets.all(30.0),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+          children: <Widget>[
+            OutlineButton(
+              onPressed: chooseImage,
+              child: Text('Choose Image'),
+            ),
+            SizedBox(
+              height: 20.0,
+            ),
+            showImage(),
+            SizedBox(
+              height: 20.0,
+            ),
+            OutlineButton(
+              onPressed: startUpload,
+              child: Text('Upload Image'),
+            ),
+            SizedBox(
+              height: 20.0,
+            ),
+            Text(
+              status,
+              textAlign: TextAlign.center,
+              style: TextStyle(
+                color: Colors.green,
+                fontWeight: FontWeight.w500,
+                fontSize: 20.0,
+              ),
+            ),
+            SizedBox(
+              height: 20.0,
+            ),
+          ],
+        ),
       ),
     );
-  }
-  // gets image from camera and runs detectObject
-  Future getImageFromCamera() async {
-    final pickedFile = await picker.getImage(source: ImageSource.camera);
-
-    setState(() {
-      if(pickedFile != null) {
-        _image = File(pickedFile.path);
-      } else {
-        print("No image Selected"); 
-      }
-    });
-    detectObject(_image);
-  }
-  // gets image from gallery and runs detectObject
-  Future getImageFromGallery() async {
-    final pickedFile = await picker.getImage(source: ImageSource.gallery);
-    setState(() {
-      if(pickedFile != null) {
-        _image = File(pickedFile.path);
-      } else {
-        print("No image Selected");
-      }
-    });
-    detectObject(_image);
   }
 }
