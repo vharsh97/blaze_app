@@ -92,3 +92,5 @@ We deployed our model to AWS Ec2 instance with free tier usage that it provides 
 <a href="http://ec2-3-17-69-178.us-east-2.compute.amazonaws.com:8080">Blaze-Web</a>
 (If there is any server failure or any error then feel free raise the issue or mail to us at:-<a href = "mailto: vharsh.srivastava@gmail.com">Harshvardhan Raj</a> or
 <a href = "mailto: ajha1054@gmail.coma@gmail.com">Amit Kumar Jha</a>
+
+## Work on Flutter app is still in progress. APK will be uploded soon on this repository.
