@@ -1,5 +1,5 @@
 # Blaze - A Flutter app to detect fire and smoke.
-<p>This project was completed by <a href="https://www.linkedin.com/">Harshvardhan Raj</a> and <a href="https://reshamas.github.io">Amit kuamr Jha</a>.  This article details how to create a web and mobile app for custom object detection.</p>
+<p>This project was completed by <a href="https://www.linkedin.com/in/vharsh-srivastava/">Harshvardhan Raj</a> and <a href="https://www.linkedin.com/in/amit-kumar-jha-aa119514a/">Amit kuamr Jha</a>.  This article details how to create a web and mobile app for custom object detection.</p>
 
 ## Problem Statement:-
 To build an Android application that can detect fire and smoke in an image. The image
@@ -92,11 +92,3 @@ We deployed our model to AWS Ec2 instance with free tier usage that it provides 
 <a href="http://ec2-3-17-69-178.us-east-2.compute.amazonaws.com:8080">Blaze-Web</a>
 (If there is any server failure or any error then feel free raise the issue or mail to us at:-<a href = "mailto: vharsh.srivastava@gmail.com">HARSH</a> or
 <a href = "mailto: ajha1054@gmail.coma@gmail.com">AMIT</a>
-
-
-## Machine Learning powered Android Application
-This application can detect objects in any of the three ways:
-  * Image choosen from Gallery
-  * From image taken within the App
-  * Real time in video stream
-  
