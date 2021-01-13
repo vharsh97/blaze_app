@@ -1,0 +1,1 @@
+ssh -i "blaze.pem" ubuntu@ec2-3-17-69-178.us-east-2.compute.amazonaws.com

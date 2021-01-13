@@ -2,7 +2,6 @@ import 'package:camera/camera.dart';
 import 'package:flutter/material.dart';
 import 'package:object_detection/Pages/home_page.dart';
 import 'package:object_detection/Pages/login_page.dart';
-import 'package:object_detection/realtime/live_camera.dart';
 import 'package:object_detection/static%20image/static.dart';
 import 'package:object_detection/utils/Constants.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -33,9 +32,10 @@ Future<void> main() async {
       routes: {
         "/login": (context) => LoginPage(),
         "/home": (context) => MyApp(),
-        "/livefeed": (context) => LiveFeed(cameras),
         "/staticfeed": (context) => StaticImage(),
       },
     )
   );
 }
+
+
