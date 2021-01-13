@@ -7,7 +7,7 @@ import 'package:image_picker/image_picker.dart';
 class StaticImage extends StatefulWidget {
   StaticImage() : super();
 
-  final String title = "Upload Image Demo";
+  final String title = "Detect in Image";
 
   @override
   StaticImageState createState() => StaticImageState();
@@ -16,18 +16,36 @@ class StaticImage extends StatefulWidget {
 class StaticImageState extends State<StaticImage> {
   //
   static final String uploadEndPoint =
-      'http://ec2-3-17-69-178.us-east-2.compute.amazonaws.com:8080/image';
+      'http://ec2-18-223-15-148.us-east-2.compute.amazonaws.com:8080/image/';
   Future<File> file;
   String status = '';
   String base64Image;
   File tmpFile;
   String errMessage = 'Error Uploading Image';
+  bool _isVisible = false;
 
-  chooseImage() {
+  getImageFromGallery() {
     setState(() {
       file = ImagePicker.pickImage(source: ImageSource.gallery);
+      print("file is : $file");
     });
     setStatus('');
+    showUpload();
+  }
+
+  getImageFromCamera() {
+    setState(() {
+      file = ImagePicker.pickImage(source: ImageSource.camera);
+      print("file is : $file");
+    });
+    setStatus('');
+    showUpload();
+  }
+
+  showUpload() {
+    setState(() {
+      _isVisible = !_isVisible;
+    });
   }
 
   setStatus(String message) {
@@ -37,38 +55,58 @@ class StaticImageState extends State<StaticImage> {
   }
 
   startUpload() {
-    setStatus('Uploading Image...');
+    setStatus('Predicting Image...');
     if (null == tmpFile) {
       setStatus(errMessage);
       return;
     }
-    String fileName = tmpFile.path.split('/').last;
+    String fileName = tmpFile.path;
+    print(fileName);
     upload(fileName);
   }
 
-  upload(String fileName) {
-    http.post(uploadEndPoint, body: {
-      "image": base64Image,
-      "name": fileName,
-    }).then((result) {
-      setStatus(result.statusCode == 200 ? result.body : errMessage);
-    }).catchError((error) {
-      setStatus(error);
+  upload(String fileName) async{
+    var request = http.MultipartRequest('POST', Uri.parse(uploadEndPoint));
+    request.files.add(await http.MultipartFile.fromPath('images', fileName));
+    http.Response response = await http.Response.fromStream(await request.send());
+    print("Result: ${response.statusCode}");
+    print(response.body);
+
+    if(response.statusCode==200)
+      setStatus("Predicted Image");
+    else
+      setStatus(response.reasonPhrase);
+
+    setState(() {
+      base64Image = response.body;
     });
+
+    showUpload();
   }
 
   Widget showImage() {
     return FutureBuilder<File>(
       future: file,
       builder: (BuildContext context, AsyncSnapshot<File> snapshot) {
+        if (null != base64Image) {
+          return Flexible(
+            child: Image.memory(
+              Base64Codec().decode(base64Image),
+              fit: BoxFit.contain,
+              width: MediaQuery.of(context).size.height / 2,
+              height: MediaQuery.of(context).size.height / 3,
+            ),
+          );
+        }
         if (snapshot.connectionState == ConnectionState.done &&
             null != snapshot.data) {
           tmpFile = snapshot.data;
-          base64Image = base64Encode(snapshot.data.readAsBytesSync());
           return Flexible(
             child: Image.file(
-              snapshot.data,
-              fit: BoxFit.fill,
+              tmpFile,
+              fit: BoxFit.contain,
+              width: MediaQuery.of(context).size.height / 2,
+              height: MediaQuery.of(context).size.height / 3,
             ),
           );
         } else if (null != snapshot.error) {
@@ -76,7 +114,7 @@ class StaticImageState extends State<StaticImage> {
             'Error Picking Image',
             textAlign: TextAlign.center,
           );
-        } else {
+        }  else {
           return const Text(
             'No Image Selected',
             textAlign: TextAlign.center,
@@ -90,45 +128,80 @@ class StaticImageState extends State<StaticImage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Upload Image Demo"),
+        title: Text("Detect in Image"),
       ),
-      body: Container(
-        padding: EdgeInsets.all(30.0),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.stretch,
-          children: <Widget>[
-            OutlineButton(
-              onPressed: chooseImage,
-              child: Text('Choose Image'),
-            ),
-            SizedBox(
-              height: 20.0,
-            ),
-            showImage(),
-            SizedBox(
-              height: 20.0,
-            ),
-            OutlineButton(
-              onPressed: startUpload,
-              child: Text('Upload Image'),
-            ),
-            SizedBox(
-              height: 20.0,
-            ),
-            Text(
-              status,
-              textAlign: TextAlign.center,
-              style: TextStyle(
-                color: Colors.green,
-                fontWeight: FontWeight.w500,
-                fontSize: 20.0,
+      body: Stack(
+        fit: StackFit.expand,
+        children: <Widget>[
+          Center(
+            child: Padding(
+              padding: const EdgeInsets.all(15.0),
+              child: Column(
+                children: <Widget>[
+                  SizedBox(height: MediaQuery.of(context).size.height / 8),
+                  showImage(),
+                  SizedBox(
+                    height: 20.0,
+                  ),
+                  Visibility(
+                    child: ButtonTheme(
+                      buttonColor: Colors.deepOrangeAccent,
+                      minWidth: 170,
+                      child: RaisedButton(
+                        child:  Text(
+                          "Upload",
+                          style: TextStyle(color: Colors.white),
+                        ),
+                        onPressed: startUpload,
+                      ),
+                    ),
+                    visible: _isVisible,
+                  ),
+                  SizedBox(
+                    height: 20.0,
+                  ),
+                  Text(
+                    status,
+                    textAlign: TextAlign.center,
+                    style: TextStyle(
+                      color: Colors.green,
+                      fontWeight: FontWeight.bold,
+                      fontSize: 25.0,
+                    ),
+                  ),
+                  SizedBox(
+                    height: 20.0,
+                  ),
+                  status=="Predicted Image" ? Text(
+                    "Go back for new Prediction",
+                    textAlign: TextAlign.center,
+                    style: TextStyle(
+                      color: Colors.red,
+                      fontWeight: FontWeight.w500,
+                      fontSize: 20.0,
+                    ),
+                  ) : Text(''),
+                ],
               ),
             ),
-            SizedBox(
-              height: 20.0,
-            ),
-          ],
-        ),
+          ),
+        ],
+      ),
+      floatingActionButton: Row(
+        mainAxisAlignment: MainAxisAlignment.end,
+        children: <Widget>[
+          FloatingActionButton(
+            heroTag: "Fltbtn2",
+            child: Icon(Icons.camera_alt),
+            onPressed: getImageFromCamera,
+          ),
+          SizedBox(width: 10,),
+          FloatingActionButton(
+            heroTag: "Fltbtn1",
+            child: Icon(Icons.photo),
+            onPressed: getImageFromGallery,
+          ),
+        ],
       ),
     );
   }
