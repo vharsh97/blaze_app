@@ -25,7 +25,7 @@
 # ec2 related
 
 /blaze.pem/
-/start server.txt/
+/start_server.txt/
 
 # Flutter/Dart/Pub related
 **/doc/api/
