@@ -1,6 +1,14 @@
 # Blaze - A Flutter app to detect fire and smoke.
 <p>This project was completed by <a href="https://www.linkedin.com/in/vharsh-srivastava/">Harshvardhan Raj</a> and <a href="https://www.linkedin.com/in/amit-kumar-jha-aa119514a/">Amit kuamr Jha</a>.  This article details how to create a web and mobile app for custom object detection.</p>
 
+***
+
+<div align="center">
+<img width="100" height="200" align="center" src="/screenshots/4.png"> <img width="100" height="200" align="center" src="/screenshots/5.png">                                 <img width="100" align="center" height="200" src="/screenshots/6.png"> <img width="100" align="center" height="200" src="/screenshots/7.png">                                     <img width="100" height="200" align="center" src="/screenshots/8.png"> <img width="100" align="center" height="200" src="/screenshots/9.png">                                 <img width="100" align="center" height="200" src="/screenshots/10.png"> <img width="100" align="center" height="200" src="/screenshots/11.png">
+</div>
+
+***
+
 ## Problem Statement:-
 To build an Android application that can detect fire and smoke in an image. The image
 can be either taken from gallery or capture a new image using camera. Colored bounding box has to
@@ -93,4 +101,5 @@ We deployed our model to AWS Ec2 instance with free tier usage that it provides 
 (If there is any server failure or any error then feel free raise the issue or mail to us at:-<a href = "mailto: vharsh.srivastava@gmail.com">Harshvardhan Raj</a> or
 <a href = "mailto: ajha1054@gmail.coma@gmail.com">Amit Kumar Jha</a>
 
-## Work on Flutter app is still in progress. APK will be uploded soon on this repository.
+## Link to APK:-
+<a href="https://drive.google.com/file/d/1Xg-Hnjc_nMeLVo87yFLRc-rpKr6A8vsX/view?usp=sharing">Blaze</a>
