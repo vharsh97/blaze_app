@@ -143,6 +143,32 @@ class StaticImageState extends State<StaticImage> {
                   SizedBox(
                     height: 20.0,
                   ),
+                  Text(
+                    status,
+                    textAlign: TextAlign.center,
+                    style: TextStyle(
+                      color: Colors.green,
+                      fontWeight: FontWeight.bold,
+                      fontSize: 25.0,
+                    ),
+                  ),
+                  SizedBox(
+                    height: 30.0,
+                  ),
+                  status == 'Predicted Image' ?
+                    ButtonTheme(
+                      buttonColor: Colors.deepOrangeAccent,
+                      minWidth: 170,
+                      child: RaisedButton(
+                        child: Text(
+                        "New Prediction",
+                        style: TextStyle(color: Colors.white),
+                        ),
+                        onPressed: () {
+                        Navigator.pushNamed(context, "/home");
+                        },
+                        ),
+                    ) :
                   Visibility(
                     child: ButtonTheme(
                       buttonColor: Colors.deepOrangeAccent,
@@ -160,49 +186,49 @@ class StaticImageState extends State<StaticImage> {
                   SizedBox(
                     height: 20.0,
                   ),
-                  Text(
-                    status,
-                    textAlign: TextAlign.center,
-                    style: TextStyle(
-                      color: Colors.green,
-                      fontWeight: FontWeight.bold,
-                      fontSize: 25.0,
-                    ),
-                  ),
-                  SizedBox(
-                    height: 20.0,
-                  ),
-                  status=="Predicted Image" ? Text(
-                    "Go back for new Prediction",
-                    textAlign: TextAlign.center,
-                    style: TextStyle(
-                      color: Colors.red,
-                      fontWeight: FontWeight.w500,
-                      fontSize: 20.0,
-                    ),
-                  ) : Text(''),
                 ],
               ),
             ),
           ),
         ],
       ),
-      floatingActionButton: Row(
-        mainAxisAlignment: MainAxisAlignment.end,
-        children: <Widget>[
-          FloatingActionButton(
-            heroTag: "Fltbtn2",
-            child: Icon(Icons.camera_alt),
-            onPressed: getImageFromCamera,
+      floatingActionButton: status == 'Predicted Image' ? Opacity(
+        opacity: 0.0,
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.end,
+          children: <Widget>[
+            FloatingActionButton(
+              heroTag: "Fltbtn2",
+              child: Icon(Icons.camera_alt),
+              onPressed: null,
+            ),
+            SizedBox(width: 10,),
+            FloatingActionButton(
+              heroTag: "Fltbtn1",
+              child: Icon(Icons.photo),
+              onPressed: null,
+            ),
+          ],
+        ),
+      ) : Opacity(
+          opacity: 1.0,
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.end,
+            children: <Widget>[
+              FloatingActionButton(
+                heroTag: "Fltbtn2",
+                child: Icon(Icons.camera_alt),
+                onPressed: getImageFromCamera,
+              ),
+              SizedBox(width: 10,),
+              FloatingActionButton(
+                heroTag: "Fltbtn1",
+                child: Icon(Icons.photo),
+                onPressed: getImageFromGallery,
+              ),
+            ],
           ),
-          SizedBox(width: 10,),
-          FloatingActionButton(
-            heroTag: "Fltbtn1",
-            child: Icon(Icons.photo),
-            onPressed: getImageFromGallery,
-          ),
-        ],
-      ),
+      )
     );
   }
 }
