@@ -93,4 +93,5 @@ We deployed our model to AWS Ec2 instance with free tier usage that it provides 
 (If there is any server failure or any error then feel free raise the issue or mail to us at:-<a href = "mailto: vharsh.srivastava@gmail.com">Harshvardhan Raj</a> or
 <a href = "mailto: ajha1054@gmail.coma@gmail.com">Amit Kumar Jha</a>
 
-## Work on Flutter app is still in progress. APK will be uploded soon on this repository.
+## Link to APK:-
+<a href="https://drive.google.com/file/d/1Xg-Hnjc_nMeLVo87yFLRc-rpKr6A8vsX/view?usp=sharing">Blaze</a>
