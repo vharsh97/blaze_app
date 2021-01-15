@@ -2,9 +2,9 @@
 <p>This project was completed by <a href="https://www.linkedin.com/in/vharsh-srivastava/">Harshvardhan Raj</a> and <a href="https://www.linkedin.com/in/amit-kumar-jha-aa119514a/">Amit kuamr Jha</a>.  This article details how to create a web and mobile app for custom object detection.</p>
 
 ***
-
+<div align="center">
 <img width="100" height="200" align="center" src="/screenshots/4.png"> <img width="100" height="200" align="center" src="/screenshots/5.png">                                 <img width="100" align="center" height="200" src="/screenshots/6.png"> <img width="100" align="center" height="200" src="/screenshots/7.png">                                     <img width="100" height="200" align="center" src="/screenshots/8.png"> <img width="100" align="center" height="200" src="/screenshots/9.png">                                 <img width="100" align="center" height="200" src="/screenshots/10.png"> <img width="100" align="center" height="200" src="/screenshots/11.png">
-
+</div>
 ***
 
 ## Problem Statement:-
